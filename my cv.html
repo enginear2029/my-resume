@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Kumar - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --card-bg: #161920;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #60a5fa;
+            --border-color: #2e3440;
+            --handcrafted-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 0.05);
+            --handcrafted-shadow-hover: 6px 6px 0px 0px rgba(96, 165, 250, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Dark Theme Header Card */
+        header {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--handcrafted-shadow);
+            position: relative;
+        }
+
+        /* Fixed Image Rendering Container */
+        .profile-img-container {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0px 0px 15px rgba(96, 165, 250, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .summary {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 650px;
+        }
+
+        /* Buttons & Interactions */
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            background: #1e2330;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 2px 2px 0px rgba(255,255,255,0.05);
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0px var(--accent);
+            border-color: var(--accent);
+            color: var(--accent);
+            background: #161920;
+        }
+
+        /* Workspace Grid Split */
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .links-container {
+                justify-content: center;
+            }
+        }
+
+        /* Structural Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--handcrafted-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            box-shadow: var(--handcrafted-shadow-hover);
+            border-color: #3b4252;
+        }
+
+        h2.section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+
+        .item-subtitle {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .item-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Skill Pill Tags */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #1e2330;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tag.language {
+            background: #242936;
+            border-color: #434c5e;
+        }
+
+        /* WhatsApp QR Modal Setup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 17, 21, 0.85);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            max-width: 360px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        .qr-img {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            background: white; /* Kept white to ensure the QR code scans easily */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="profile-img-container">
+                <img src="profile.jpeg" alt="Aditya Kumar">
+            </div>
+            <div class="header-text">
+                <h1>Aditya Kumar</h1>
+                <div class="subtitle">Mathematics Major & CS Minor | IISER Berhampur</div>
+                <p class="summary">
+                    Currently pursuing a BS-MS Dual Degree at IISER Berhampur. Deeply passionate about problem-solving, algorithm design, computational data sciences, and building innovative, analytical workflows.
+                </p>
+                
+                <div class="links-container">
+                    <a href="mailto:adityakumar920@outlook.com" class="btn">📧 Email Me</a>
+                    <a href="https://www.linkedin.com/in/adityakumar2030" target="_blank" class="btn">🔗 LinkedIn</a>
+                    <a href="https://github.com/enginear2029" target="_blank" class="btn">💻 GitHub</a>
+                    <button class="btn" onclick="openWhatsAppModal()">💬 WhatsApp Me</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            
+            <main>
+                <div class="section-card">
+                    <h2 class="section-title">📂 Experience & Roles</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="item-title">Science Council Member</div>
+                        <div class="item-subtitle">Students Activity Council, IISER Berhampur</div>
+                        <div class="item-date">May 2026 - Present</div>
+                        <div class="item-desc">Contributing to institute-level academic initiatives, outreach operations, and events structuring to cultivate scientific curiosity within the research community.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-title">Web Developer</div>
+                        <div class="item-subtitle">Project Spiral</div>
+                        <div class="item-date">February 2026 - Present</div>
+                        <div class="item-desc">Designing, maintaining, and refining interactive modules and web application layouts tailored for student environments.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-title">PR Team Member</div>
+                        <div class="item-subtitle">IIEC, IISER Berhampur</div>
+                        <div class="item-date">December 2025 - Present</div>
+                        <div class="item-desc">Managing communication channels, engagement strategies, and design frameworks to elevate corporate relations and incubation support.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-title">Club Member</div>
+                        <div class="item-subtitle">Lovelace Society: The Official Tech Club of IISER Berhampur</div>
+                        <div class="item-date">October 2025 - Present</div>
+                        <div class="item-desc">Collaborating on structural codebases, data analysis methodologies, and community workshops centered on scientific programming.</div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2 class="section-title">🎓 Education</h2>
+                    <div class="timeline-item">
+                        <div class="item-title">BS-MS Dual Degree (Mathematical & Computational Data Sciences)</div>
+                        <div class="item-subtitle">Indian Institute of Science Education and Research, Berhampur</div>
+                        <div class="item-date">2025 - 2030</div>
+                        <div class="item-desc">Secured Category AIR 944 in the IISER Aptitude Test (IAT). Focus areas map directly across algorithm design, advanced calculus, linear algebra, and data architecture models.</div>
+                    </div>
+                </div>
+            </main>
+
+            <aside>
+                <div class="section-card">
+                    <h2 class="section-title">⚡ Core Skills</h2>
+                    <div class="tag-list">
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">Algorithm Design</span>
+                        <span class="tag">Generative AI</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">C / C++</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Internet of Things (IoT)</span>
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag">Probability</span>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2 class="section-title">🏆 Certifications & Highlights</h2>
+                    <ul style="list-style-type: '⚡ '; padding-left: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 8px;">International Youth Math Challenge Alumnus</li>
+                        <li style="margin-bottom: 8px;">Mimamsa 2026 Prelims Competitor</li>
+                        <li style="margin-bottom: 8px;">Generative AI Expert (Optum AI Dojo)</li>
+                        <li>PHN Technology IoT Workshop Scholar</li>
+                    </ul>
+                </div>
+
+                <div class="section-card">
+                    <h2 class="section-title">🗣️ Languages</h2>
+                    <div class="tag-list">
+                        <span class="tag language">Hindi (Native)</span>
+                        <span class="tag language">English (Professional)</span>
+                        <span class="tag language">German (Elementary)</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <div id="whatsappModal" class="modal" onclick="closeWhatsAppModalOutside(event)">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeWhatsAppModal()">&times;</span>
+            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px; color: #ffffff;">Connect on WhatsApp</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Scan the QR code below or use the button link to open a chat channel with Adi.</p>
+            
+            <img class="qr-img" src="image_30fb76.png" alt="WhatsApp QR Code">
+            
+            <a href="https://wa.me/919204392326" target="_blank" class="btn" style="display: block; text-align: center; background: #25D366; color: white; border-color: #20ba5a; box-shadow: 0px 4px 10px rgba(37, 211, 102, 0.3);">
+                🚀 Launch Direct Chat
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('whatsappModal');
+
+        function openWhatsAppModal() {
+            modal.style.display = 'flex';
+        }
+
+        function closeWhatsAppModal() {
+            modal.style.display = 'none';
+        }
+
+        function closeWhatsAppModalOutside(event) {
+            if (event.target === modal) {
+                closeWhatsAppModal();
+            }
+        }
+    </script>
+</body>
+</html>
